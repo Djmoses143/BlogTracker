@@ -5,27 +5,33 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>EmployeeList</h2>
+<h2>Employee List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "SaveEmployee")
+    @Html.ActionLink("Add New", "SaveEmployee")
 </p>
 <table class="table">
-    <tr>
+    <tr style="background-color:darkgray">
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+           Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateOfJoining)
+           Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PassCode)
+            Date Of Joining
         </th>
-        <th></th>
+        <th>
+            Pass-Code
+        </th>
+        <th></th><th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr style="background-color:lightgray">
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailId)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -35,10 +41,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.PassCode)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { mail=item.EmailId }) |
-            @Html.ActionLink("Delete", "Delete", new { mail=item.EmailId })
+        <td style="background-color:yellow;text-align:center;border-radius:10px">
+            @Html.ActionLink("Delete", "Delete", new { mail = item.EmailId })
         </td>
+        <td style="background-color:powderblue;text-align:center;border-radius:10px">
+            @Html.ActionLink("Edit", "Edit", new { mail = item.EmailId })
+        </td>
+
     </tr>
 }
 
